@@ -14,12 +14,38 @@ code = """
 using $(jll_package)
 
 $(jll_func)() do f
+    # Print out the full path to the executable
     println(f)
-    println(ENV["PATH"])
-    print(ENV["$(LIBPATH_ENV)"])
+
+    # Configure env
+    env = Dict{String,String}()
+    ## PATH
+    env["PATH"] = ENV["PATH"]
+    ## LD_LIBRARY_PATH
+    env["$(LIBPATH_ENV)"] = ENV["$(LIBPATH_ENV)"]
+
+    # Git requires some extra variables
+    if "$(binary)" == "git"
+        artifact_root = dirname(dirname(f))
+        ## Add libcurl to libpath
+        curl_libdir = dirname(Git_jll.LibCURL_jll.libcurl_path)
+        env["$(LIBPATH_ENV)"] = "\$(curl_libdir):\$(env["$(LIBPATH_ENV)"])"
+        ## Set GIT_EXEC_PATH
+        env["GIT_EXEC_PATH"] = joinpath(artifact_root, "libexec", "git-core")
+        ## Set GIT_TEMPLATE_DIR
+        env["GIT_TEMPLATE_DIR"] = joinpath(artifact_root, "share", "git-core", "templates")
+        ## Set GIT_SSL_CAINFO
+        env["GIT_SSL_CAINFO"] = joinpath(dirname(Sys.BINDIR), "share", "julia", "cert.pem")
+    end
+
+    # Print env to stdout
+    for k in sort(collect(keys(env)))
+        print(k, "=\\\"", env[k], "\\\" ")
+    end
 end
 """
-exepath, PATH, LD_LIBRARY_PATH = split(read(`$(Base.julia_cmd()) --project=. -e $code`, String), '\n')
+
+exepath, env = split(strip(read(`$(Base.julia_cmd()) --project=. -e $code`, String)), '\n')
 
 @assert basename(exepath) == binary
 
@@ -28,8 +54,9 @@ mkpath(dirname(shimpath))
 open(shimpath, "w") do io
     print(io, """
         #!/bin/bash
-        exec env PATH="$(PATH)" $(LIBPATH_ENV)="$(LD_LIBRARY_PATH)" "$(basename(exepath))" "\$@"
+        exec env $(env) $(basename(exepath)) "\$@"
         """)
 end
+
 # chmod +x
 chmod(shimpath, filemode(shimpath) | 0o111)

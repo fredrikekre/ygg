@@ -33,6 +33,7 @@ endef
 $(eval $(call simple-install,ghr,ghr_jll,ghr))
 $(eval $(call simple-install,fzf,fzf_jll,fzf))
 $(eval $(call simple-install,git-crypt,git_crypt_jll,git_crypt))
+$(eval $(call simple-install,git,Git_jll,git))
 
 # TODO: update this list dynamically in simple-install
-update: update-fzf update-ghr update git-crypt
+update: update-fzf update-ghr update-git-crypt update-git
