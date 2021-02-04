@@ -2,11 +2,11 @@
 if length(ARGS) != 4
     throw(ArgumentError("""
         wrong number of arguments. Usage:
-            julia generate_shims.jl binary jll_package jll_func prefix
+            julia generate_shims.jl binary jll_package jll_func binpath
             """))
 end
 
-binary, jll_package, jll_func, prefix = ARGS
+binary, jll_package, jll_func, yggbin = ARGS
 
 const LIBPATH_ENV = Sys.islinux() ? "LD_LIBRARY_PATH" : "DYLD_FALLBACK_LIBRARY_PATH"
 
@@ -49,7 +49,7 @@ exepath, env = split(strip(read(`$(Base.julia_cmd()) --project=$(ENV["YGGDIR"]) 
 
 @assert basename(exepath) == binary
 
-shimpath = joinpath(prefix, "bin", basename(exepath))
+shimpath = joinpath(yggbin, basename(exepath))
 mkpath(dirname(shimpath))
 open(shimpath, "w") do io
     print(io, """

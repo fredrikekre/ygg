@@ -1,20 +1,24 @@
 MAKEFILE:=$(abspath $(firstword $(MAKEFILE_LIST)))
 YGGDIR:=$(shell dirname $(abspath $(firstword $(MAKEFILE_LIST))))
 JULIA ?= julia
-PREFIX ?= ${YGGDIR}/prefix
+# PREFIX ?= ${YGGDIR}/build
+YGGBIN ?= ${YGGDIR}/build/bin
 
 export YGGDIR
 export JULIA_LOAD_PATH=${YGGDIR}/Project.toml:@stdlib
 
-ygg: ${PREFIX}/bin/ygg
+ygg: ${YGGBIN}/ygg
 
-${PREFIX}/bin/ygg: ${PREFIX}/bin
-	echo "#!/bin/bash" > ${PREFIX}/bin/ygg
-	echo "IFS='-'" >> ${PREFIX}/bin/ygg
-	echo "make -f ${MAKEFILE} "'"$$*"' >> ${PREFIX}/bin/ygg
-	chmod +x ${PREFIX}/bin/ygg
+clean-ygg:
+	rm -f ${YGGBIN}/ygg
 
-${PREFIX}/bin:
+${YGGBIN}/ygg: ${YGGBIN}
+	echo "#!/bin/bash" > ${YGGBIN}/ygg
+	echo "IFS='-'" >> ${YGGBIN}/ygg
+	echo "make -f ${MAKEFILE} "'"$$*"' >> ${YGGBIN}/ygg
+	chmod +x ${YGGBIN}/ygg
+
+${YGGBIN}:
 	mkdir -p $@
 
 ${YGGDIR}/Project.toml:
@@ -28,21 +32,21 @@ ${YGGDIR}/Manifest.toml: ${YGGDIR}/Project.toml
 ##     simple-install binary jll_package jll_func
 define simple-install
 
-install-$(1): ${PREFIX}/bin/$(1)
+install-$(1): ${YGGBIN}/$(1)
 
-${PREFIX}/bin/$(1): ${YGGDIR}/Manifest.toml
+${YGGBIN}/$(1): ${YGGDIR}/Manifest.toml
 	grep -q $(2) ${YGGDIR}/Project.toml || \
 	    ${JULIA} -e 'import Pkg; Pkg.add("$(2)")'
 	${JULIA} -e 'import Pkg; Pkg.instantiate()'
-	${JULIA} ${YGGDIR}/generate_shims.jl $(1) $(2) $(3) ${PREFIX}
+	${JULIA} ${YGGDIR}/generate_shims.jl $(1) $(2) $(3) ${YGGBIN}
 
 uninstall-$(1):
 	${JULIA} -e 'import Pkg; try Pkg.rm("$(2)") catch e end'
-	rm -f ${PREFIX}/bin/$(1)
+	rm -f ${YGGBIN}/$(1)
 
 update-$(1):
 	${JULIA} -e 'import Pkg; Pkg.update("$(2)")'
-	${JULIA} ${YGGDIR}/generate_shims.jl $(1) $(2) $(3) ${PREFIX}
+	${JULIA} ${YGGDIR}/generate_shims.jl $(1) $(2) $(3) ${YGGBIN}
 
 endef
 
