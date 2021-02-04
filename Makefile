@@ -1,22 +1,21 @@
-JULIA ?= julia
-PREFIX ?= ${HOME}
-
 MAKEFILE:=$(abspath $(firstword $(MAKEFILE_LIST)))
 YGGDIR:=$(shell dirname $(abspath $(firstword $(MAKEFILE_LIST))))
+JULIA ?= julia
+PREFIX ?= ${YGGDIR}/prefix
 
 export YGGDIR
 export JULIA_LOAD_PATH=${YGGDIR}/Project.toml:@stdlib
 
-ygg: ${PREFIX}/bin ${PREFIX}/bin/ygg
+ygg: ${PREFIX}/bin/ygg
 
-${PREFIX}/bin:
-	mkdir -p $@
-
-${PREFIX}/bin/ygg:
+${PREFIX}/bin/ygg: ${PREFIX}/bin
 	echo "#!/bin/bash" > ${PREFIX}/bin/ygg
 	echo "IFS='-'" >> ${PREFIX}/bin/ygg
 	echo "make -f ${MAKEFILE} "'"$$*"' >> ${PREFIX}/bin/ygg
 	chmod +x ${PREFIX}/bin/ygg
+
+${PREFIX}/bin:
+	mkdir -p $@
 
 ${YGGDIR}/Project.toml:
 	touch ${YGGDIR}/Project.toml
