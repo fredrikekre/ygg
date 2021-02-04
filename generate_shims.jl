@@ -45,7 +45,7 @@ $(jll_func)() do f
 end
 """
 
-exepath, env = split(strip(read(`$(Base.julia_cmd()) --project=. -e $code`, String)), '\n')
+exepath, env = split(strip(read(`$(Base.julia_cmd()) --project=$(ENV["YGGDIR"]) -e $code`, String)), '\n')
 
 @assert basename(exepath) == binary
 
