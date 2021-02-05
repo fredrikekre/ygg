@@ -1,0 +1,51 @@
+# ygg
+
+Simple installer for using [BinaryBuilder.jl][BB] built binaries from [Yggdrasil][YGG]
+outside of Julia.
+
+## Installation and usage
+
+1. Clone this repository and `cd` to it:
+   ```bash
+   $ git clone https://github.com/fredrikekre/ygg.git
+
+   $ cd ygg
+   ```
+
+2. Run `make` to install the `ygg` executable:
+   ```bash
+   $ make
+   ```
+   By default all executables, including `ygg`, is installed to the `build/bin` directory
+   inside the repository. Either make sure this directory is available in `$PATH` or
+   configure the target `bin` directory by specifying `$YGGBINDIR`, for example,
+   if you have `$HOME/bin` in `$PATH`:
+   ```bash
+   $ make YGGBINDIR=$HOME/bin
+   ```
+   This will install `ygg`, and all binaries `ygg` itself will install, to `$HOME/bin/ygg`.
+
+3. Install, update, and uninstall binaries with `ygg install <binary>`,
+   `ygg install <binary>`, and `ygg uninstall <binary>`, respectively. For example, to
+   install the `zstd` compression binary:
+   ```bash
+   $ ygg install zstd
+   ```
+
+## Available binaries
+
+The binaries that are currently available to install with `ygg` are:
+
+ - `fzf`
+ - `ghr`
+ - `git`
+ - `git-crypt`
+ - `rr`
+ - `zstdt`/`zstdmt`
+
+ If a binary is available in Yggdrasil it is, in general, quite easy to add new ones:
+ just a single line in the `Makefile`!
+
+
+ [BB]: https://github.com/JuliaPackaging/BinaryBuilder.jl
+ [YGG]: https://github.com/JuliaPackaging/Yggdrasil
