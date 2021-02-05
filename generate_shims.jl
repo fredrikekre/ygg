@@ -6,14 +6,14 @@ if length(ARGS) != 4
             """))
 end
 
-binary, jll_package, jll_func, yggbin = ARGS
+binary, jll_package, jll_func, yggbindir = ARGS
 
 const LIBPATH_ENV = Sys.islinux() ? "LD_LIBRARY_PATH" : "DYLD_FALLBACK_LIBRARY_PATH"
 
 code = """
-using $(jll_package)
+import $(jll_package)
 
-$(jll_func)() do f
+$(jll_package).$(jll_func)() do f
     # Print out the full path to the executable
     println(f)
 
@@ -45,11 +45,11 @@ $(jll_func)() do f
 end
 """
 
-exepath, env = split(strip(read(`$(Base.julia_cmd()) --project=$(ENV["YGGDIR"]) -e $code`, String)), '\n')
+exepath, env = split(strip(read(`$(Base.julia_cmd()) -e $code`, String)), '\n')
 
 @assert basename(exepath) == binary
 
-shimpath = joinpath(yggbin, basename(exepath))
+shimpath = joinpath(yggbindir, basename(exepath))
 mkpath(dirname(shimpath))
 open(shimpath, "w") do io
     print(io, """
