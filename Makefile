@@ -1,6 +1,6 @@
 MAKEFILE:=$(abspath $(firstword $(MAKEFILE_LIST)))
 SRCDIR:=$(shell dirname $(abspath $(firstword $(MAKEFILE_LIST))))
-JULIA ?= julia
+JULIA ?= julia --startup-file=no
 # PREFIX ?= ${SRCDIR}/build
 YGGBINDIR ?= ${SRCDIR}/build/bin
 
