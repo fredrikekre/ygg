@@ -85,6 +85,7 @@ endef
 
 $(eval $(call simple-install,ghr,ghr_jll,ghr))
 $(eval $(call simple-install,fzf,fzf_jll,fzf))
+$(eval $(call simple-install,gh,gh_cli_jll,gh))
 $(eval $(call simple-install,git-crypt,git_crypt_jll,git_crypt))
 $(eval $(call simple-install,git,Git_jll,git))
 $(eval $(call simple-install,rr,rr_jll,rr))
