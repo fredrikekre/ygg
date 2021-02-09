@@ -5,6 +5,8 @@ outside of Julia.
 
 ## Installation and usage
 
+0. Install dependencies: `ygg` requires `julia` and `make`.
+
 1. Clone this repository and `cd` to it:
    ```bash
    $ git clone https://github.com/fredrikekre/ygg.git
@@ -37,11 +39,13 @@ outside of Julia.
 The binaries that are currently available to install with `ygg` are:
 
  - `fzf`
+ - `gh`
  - `ghr`
  - `git`
  - `git-crypt`
+ - `gof3r`
  - `rr`
- - `zstdt`/`zstdmt`
+ - `zstd`/`zstdmt`
 
  If a binary is available in Yggdrasil it is, in general, quite easy to add new ones:
  just a single line in the `Makefile`!
