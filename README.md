@@ -58,6 +58,7 @@ The binaries that are currently available to install with `ygg` are:
  - `pdfunite`
  - `rr`
  - `tokei`
+ - `unpaper`
  - `zstd`/`zstdmt`
 
  If a binary is available in Yggdrasil it is, in general, quite easy to add new ones:
