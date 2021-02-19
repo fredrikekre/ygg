@@ -44,7 +44,20 @@ The binaries that are currently available to install with `ygg` are:
  - `git`
  - `git-crypt`
  - `gof3r`
+ - `pdfattach`
+ - `pdfdetach`
+ - `pdffonts`
+ - `pdfimages`
+ - `pdfinfo`
+ - `pdfseparate`
+ - `pdftocairo`
+ - `pdftohtml`
+ - `pdftoppm`
+ - `pdftops`
+ - `pdftotext`
+ - `pdfunite`
  - `rr`
+ - `tokei`
  - `zstd`/`zstdmt`
 
  If a binary is available in Yggdrasil it is, in general, quite easy to add new ones:
