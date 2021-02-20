@@ -38,12 +38,16 @@ outside of Julia.
 
 The binaries that are currently available to install with `ygg` are:
 
+ - `duf`
+ - `ffmpeg`
+ - `ffprobe`
  - `fzf`
  - `gh`
  - `ghr`
  - `git`
  - `git-crypt`
  - `gof3r`
+ - `kubectl`
  - `pdfattach`
  - `pdfdetach`
  - `pdffonts`
@@ -57,6 +61,7 @@ The binaries that are currently available to install with `ygg` are:
  - `pdftotext`
  - `pdfunite`
  - `rr`
+ - `tectonic`
  - `tokei`
  - `unpaper`
  - `zstd`/`zstdmt`
