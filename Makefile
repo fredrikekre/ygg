@@ -83,6 +83,7 @@ update-$(1):
 .PHONY: install-$(1) uninstall-$(1) update-$(1)
 endef
 
+$(eval $(call simple-install,convert,ImageMagick_jll,imagemagick_convert))
 $(eval $(call simple-install,duf,duf_jll,duf))
 $(eval $(call simple-install,ffmpeg,FFMPEG_jll,ffmpeg))
 $(eval $(call simple-install,ffprobe,FFMPEG_jll,ffprobe))
@@ -92,6 +93,7 @@ $(eval $(call simple-install,ghr,ghr_jll,ghr))
 $(eval $(call simple-install,git,Git_jll,git))
 $(eval $(call simple-install,git-crypt,git_crypt_jll,git_crypt))
 $(eval $(call simple-install,gof3r,s3gof3r_jll,gof3r))
+$(eval $(call simple-install,identify,ImageMagick_jll,identify))
 $(eval $(call simple-install,kubectl,kubectl_jll,kubectl))
 $(eval $(call simple-install,rr,rr_jll,rr))
 $(eval $(call simple-install,unpaper,unpaper_jll,unpaper))

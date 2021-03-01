@@ -38,6 +38,7 @@ outside of Julia.
 
 The binaries that are currently available to install with `ygg` are:
 
+ - `convert`
  - `duf`
  - `ffmpeg`
  - `ffprobe`
@@ -47,6 +48,7 @@ The binaries that are currently available to install with `ygg` are:
  - `git`
  - `git-crypt`
  - `gof3r`
+ - `identify`
  - `kubectl`
  - `pdfattach`
  - `pdfdetach`
