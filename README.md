@@ -50,6 +50,8 @@ The binaries that are currently available to install with `ygg` are:
  - `gof3r`
  - `identify`
  - `kubectl`
+ - `pandoc`
+ - `pandoc-crossref`
  - `pdfattach`
  - `pdfdetach`
  - `pdffonts`
