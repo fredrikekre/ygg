@@ -58,6 +58,19 @@ ${SRCDIR}/Project.toml:
 ${SRCDIR}/Manifest.toml: ${SRCDIR}/Project.toml
 	${JULIA} -e 'import Pkg; Pkg.instantiate()'
 
+install-%:
+	@echo "Unknown package $*\n" 1>&2
+	@exit 1
+
+uninstall-%:
+	@echo "Unknown package $*\n" 1>&2
+	@exit 1
+
+update-%:
+	@echo "Unknown package $*\n" 1>&2
+	@exit 1
+
+.PHONY: install-% uninstall-% update-%
 
 ## Installation rule for "simple" binaries that need nothing except
 ## PATH and LD_LIBRARY_PATH set up. Usage:
