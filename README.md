@@ -64,6 +64,7 @@ The binaries that are currently available to install with `ygg` are:
  - `pdftops`
  - `pdftotext`
  - `pdfunite`
+ - `rclone`
  - `rr`
  - `tectonic`
  - `tokei`

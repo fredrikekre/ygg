@@ -58,6 +58,19 @@ ${SRCDIR}/Project.toml:
 ${SRCDIR}/Manifest.toml: ${SRCDIR}/Project.toml
 	${JULIA} -e 'import Pkg; Pkg.instantiate()'
 
+install-%:
+	@echo "Unknown package $*\n" 1>&2
+	@exit 1
+
+uninstall-%:
+	@echo "Unknown package $*\n" 1>&2
+	@exit 1
+
+update-%:
+	@echo "Unknown package $*\n" 1>&2
+	@exit 1
+
+.PHONY: install-% uninstall-% update-%
 
 ## Installation rule for "simple" binaries that need nothing except
 ## PATH and LD_LIBRARY_PATH set up. Usage:
@@ -103,6 +116,7 @@ $(eval $(call simple-install,tectonic,tectonic_jll,tectonic))
 $(eval $(call simple-install,tokei,Tokei_jll,tokei))
 $(eval $(call simple-install,zstd,Zstd_jll,zstd))
 $(eval $(call simple-install,zstdmt,Zstd_jll,zstdmt))
+$(eval $(call simple-install,rclone,Rclone_jll,rclone))
 
 ### Poppler-utils
 $(eval $(call simple-install,pdfattach,Poppler_jll,pdfattach))
