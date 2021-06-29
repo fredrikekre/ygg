@@ -103,6 +103,7 @@ $(eval $(call simple-install,tectonic,tectonic_jll,tectonic))
 $(eval $(call simple-install,tokei,Tokei_jll,tokei))
 $(eval $(call simple-install,zstd,Zstd_jll,zstd))
 $(eval $(call simple-install,zstdmt,Zstd_jll,zstdmt))
+$(eval $(call simple-install,rclone,Rclone_jll,rclone))
 
 ### Poppler-utils
 $(eval $(call simple-install,pdfattach,Poppler_jll,pdfattach))
