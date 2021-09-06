@@ -70,6 +70,7 @@ The binaries that are currently available to install with `ygg` are:
  - `tokei`
  - `unpaper`
  - `zstd`/`zstdmt`
+ - `node`
 
  If a binary is available in Yggdrasil it is, in general, quite easy to add new ones:
  just a single line in the `Makefile`!
