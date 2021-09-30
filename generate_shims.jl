@@ -47,14 +47,12 @@ end
 
 exepath, env = split(strip(read(`$(Base.julia_cmd()) -e $code`, String)), '\n')
 
-@assert basename(exepath) == binary
-
-shimpath = joinpath(yggbindir, basename(exepath))
+shimpath = joinpath(yggbindir, binary)
 mkpath(dirname(shimpath))
 open(shimpath, "w") do io
     print(io, """
         #!/bin/bash
-        exec env $(env) $(basename(exepath)) "\$@"
+        $(env) exec -a "\$0" $(basename(exepath)) "\$@"
         """)
 end
 
