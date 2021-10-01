@@ -3,50 +3,53 @@ SRCDIR:=$(shell dirname $(abspath $(firstword $(MAKEFILE_LIST))))
 JULIA ?= julia --startup-file=no
 # PREFIX ?= ${SRCDIR}/build
 YGGBINDIR ?= ${SRCDIR}/build/bin
+MAKEFLAGS += --no-print-directory
 
 export JULIA_LOAD_PATH=${SRCDIR}/Project.toml:@stdlib
 export JULIA_PROJECT=
 
 ygg: ${YGGBINDIR}/ygg
 
-clean-ygg:
+install-ygg:
+	$(MAKE) ygg
+
+uninstall-ygg:
 	rm -f ${YGGBINDIR}/ygg
 
-.PHONY: ygg clean-ygg
+update-ygg: ${YGGBINDIR}/ygg
+	git -C ${SRCDIR} pull
+	$(MAKE) uninstall-ygg
+	$(MAKE) ygg
+
+.PHONY: ygg install-ygg uninstall-ygg update-ygg
 
 ${YGGBINDIR}/ygg: ${YGGBINDIR}
 	echo '#!/bin/bash' > $@
-	echo 'pat='\''^(install|uninstall|update) .*$$'\' >> $@
-	echo 'if [[ $$# == 2 ]] && [[ "$$*" =~ $$pat ]]; then' >> $@
-	echo '    export YGGBINDIR=$${YGGBINDIR:-$(YGGBINDIR)}' >> $@
-	echo '    make -f '"${SRCDIR}/Makefile"' $$1-$$2' >> $@
-	echo '    exit $$?' >> $@
-	echo 'fi' >> $@
-	echo 'if [[ "$$*" == "--help" ]]; then' >> $@
-	echo '    exitcode=0' >> $@
-	echo 'else' >> $@
-	echo '    exitcode=1' >> $@
-	echo 'fi' >> $@
-	echo '' >> $@
-	echo 'echo "Usage:' >> $@
-	echo '    ygg install <binary>' >> $@
-	echo '    ygg update <binary>' >> $@
-	echo '    ygg uninstall <binary>' >> $@
-	echo '' >> $@
-	echo 'Install, update or uninstall <binary> to the configured $${YGGBINDIR} location.' >> $@
-	echo '' >> $@
-	echo 'Examples:' >> $@
-	echo '    ygg install zstd' >> $@
-	echo '    ygg update zstd' >> $@
-	echo '    ygg uninstall zstd"' >> $@
-	echo '' >> $@
-	echo 'exit $$exitcode' >> $@
-	chmod +x ${YGGBINDIR}/ygg
-
-${YGGBINDIR}/ygg2: ${YGGBINDIR}
-	echo "#!/bin/bash" > ${YGGBINDIR}/ygg
-	echo "IFS='-'" >> ${YGGBINDIR}/ygg
-	echo "make -f ${MAKEFILE} "'"$$*"' >> ${YGGBINDIR}/ygg
+	@echo 'pat='\''^(install|uninstall|update) .*$$'\' >> $@
+	@echo 'if [[ $$# == 2 ]] && [[ "$$*" =~ $$pat ]]; then' >> $@
+	@echo '    export YGGBINDIR=$${YGGBINDIR:-$(YGGBINDIR)}' >> $@
+	@echo '    make -f '"${SRCDIR}/Makefile"' "$$1"-"$$2"' >> $@
+	@echo '    exit $$?' >> $@
+	@echo 'fi' >> $@
+	@echo 'if [[ "$$*" == "--help" ]]; then' >> $@
+	@echo '    exitcode=0' >> $@
+	@echo 'else' >> $@
+	@echo '    exitcode=1' >> $@
+	@echo 'fi' >> $@
+	@echo '' >> $@
+	@echo 'echo "Usage:' >> $@
+	@echo '    ygg install <binary>' >> $@
+	@echo '    ygg update <binary>' >> $@
+	@echo '    ygg uninstall <binary>' >> $@
+	@echo '' >> $@
+	@echo 'Install, update or uninstall <binary> to the configured $${YGGBINDIR} location.' >> $@
+	@echo '' >> $@
+	@echo 'Examples:' >> $@
+	@echo '    ygg install zstd' >> $@
+	@echo '    ygg update zstd' >> $@
+	@echo '    ygg uninstall zstd"' >> $@
+	@echo '' >> $@
+	@echo 'exit $$exitcode' >> $@
 	chmod +x ${YGGBINDIR}/ygg
 
 ${YGGBINDIR}:
