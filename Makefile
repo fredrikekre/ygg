@@ -118,6 +118,8 @@ $(eval $(call simple-install,zstd,Zstd_jll,zstd))
 $(eval $(call simple-install,zstdmt,Zstd_jll,zstdmt))
 $(eval $(call simple-install,rclone,Rclone_jll,rclone))
 $(eval $(call simple-install,node,NodeJS_16_jll,node))
+$(eval $(call simple-install,clang,Clang_jll,clang))
+$(eval $(call simple-install,clang++,Clang_jll,clang))
 
 ### Poppler-utils
 $(eval $(call simple-install,pdfattach,Poppler_jll,pdfattach))
