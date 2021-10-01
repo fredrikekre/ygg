@@ -34,10 +34,17 @@ outside of Julia.
    $ ygg install zstd
    ```
 
+4. To update `ygg` itself, e.g. if there are new binaries added to the repo, simply run
+   ```
+   $ ygg update ygg
+   ```
+
 ## Available binaries
 
 The binaries that are currently available to install with `ygg` are:
 
+ - `clang`
+ - `clang++`
  - `convert`
  - `duf`
  - `ffmpeg`
