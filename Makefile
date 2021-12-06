@@ -25,9 +25,9 @@ update-ygg: ${YGGBINDIR}/ygg
 
 ${YGGBINDIR}/ygg: ${YGGBINDIR}
 	echo '#!/bin/bash' > $@
+	@echo 'export YGGBINDIR=$${YGGBINDIR:-$(YGGBINDIR)}' >> $@
 	@echo 'pat='\''^(install|uninstall|update) .*$$'\' >> $@
 	@echo 'if [[ $$# == 2 ]] && [[ "$$*" =~ $$pat ]]; then' >> $@
-	@echo '    export YGGBINDIR=$${YGGBINDIR:-$(YGGBINDIR)}' >> $@
 	@echo '    make -f '"${SRCDIR}/Makefile"' "$$1"-"$$2"' >> $@
 	@echo '    exit $$?' >> $@
 	@echo 'fi' >> $@
@@ -42,7 +42,7 @@ ${YGGBINDIR}/ygg: ${YGGBINDIR}
 	@echo '    ygg update <binary>' >> $@
 	@echo '    ygg uninstall <binary>' >> $@
 	@echo '' >> $@
-	@echo 'Install, update or uninstall <binary> to the configured $${YGGBINDIR} location.' >> $@
+	@echo 'Install, update or uninstall <binary> to the configured \$${YGGBINDIR} location ($${YGGBINDIR}).' >> $@
 	@echo '' >> $@
 	@echo 'Examples:' >> $@
 	@echo '    ygg install zstd' >> $@
