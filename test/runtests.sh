@@ -84,6 +84,7 @@ if [ "${YGG_FULL_TEST-}" = 1 ]; then
     test_binary tokei
     test_binary zstdmt
     test_binary rclone
+    test_binary rg
     test_binary node
     test_binary clang
     test_binary clang++

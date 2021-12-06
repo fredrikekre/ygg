@@ -73,6 +73,7 @@ The binaries that are currently available to install with `ygg` are:
  - `pdfunite`
  - `rclone`
  - `rr`
+ - `rg` (`ripgrep`)
  - `tectonic`
  - `tokei`
  - `unpaper`

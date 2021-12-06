@@ -123,6 +123,7 @@ $(eval $(call simple-install,rclone,Rclone_jll,rclone))
 $(eval $(call simple-install,node,NodeJS_16_jll,node))
 $(eval $(call simple-install,clang,Clang_jll,clang))
 $(eval $(call simple-install,clang++,Clang_jll,clang))
+$(eval $(call simple-install,rg,ripgrep_jll,rg))
 
 ### Poppler-utils
 $(eval $(call simple-install,pdfattach,Poppler_jll,pdfattach))
