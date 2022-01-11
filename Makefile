@@ -28,7 +28,7 @@ ${YGGBINDIR}/ygg: ${YGGBINDIR}
 	@echo 'export YGGBINDIR=$${YGGBINDIR:-$(YGGBINDIR)}' >> $@
 	@echo 'pat='\''^(install|uninstall|update) .*$$'\' >> $@
 	@echo 'if [[ $$# == 2 ]] && [[ "$$*" =~ $$pat ]]; then' >> $@
-	@echo '    make -f '"${SRCDIR}/Makefile"' "$$1"-"$$2"' >> $@
+	@echo '    make -C '"${SRCDIR}"' "$$1"-"$$2"' >> $@
 	@echo '    exit $$?' >> $@
 	@echo 'fi' >> $@
 	@echo 'if [[ "$$*" == "--help" ]]; then' >> $@
