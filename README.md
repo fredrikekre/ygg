@@ -55,6 +55,7 @@ The binaries that are currently available to install with `ygg` are:
  - `git`
  - `git-crypt`
  - `gof3r`
+ - `htop`
  - `identify`
  - `kubectl`
  - `pandoc`

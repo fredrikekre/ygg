@@ -38,6 +38,11 @@ $(jll_package).$(jll_func)() do f
         env["GIT_SSL_CAINFO"] = joinpath(dirname(Sys.BINDIR), "share", "julia", "cert.pem")
     end
 
+    # Htop requires an extra variable
+    if "$(binary)" == "htop"
+        env["TERMINFO_DIRS"] = joinpath(Htop_jll.Ncurses_jll.artifact_dir, "share", "terminfo")
+    end
+
     # Print env to stdout
     for k in sort(collect(keys(env)))
         print(k, "=\\\"", env[k], "\\\" ")
