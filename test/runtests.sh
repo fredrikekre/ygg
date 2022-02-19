@@ -82,6 +82,7 @@ if [ "${YGG_FULL_TEST-}" = 1 ]; then
     test_binary unpaper
     test_binary tectonic
     test_binary tokei
+    test_binary tmux "tmux -V"
     test_binary zstdmt
     test_binary rclone
     test_binary rg
