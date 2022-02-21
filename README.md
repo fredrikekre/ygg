@@ -77,6 +77,7 @@ The binaries that are currently available to install with `ygg` are:
  - `rg` (`ripgrep`)
  - `tectonic`
  - `tokei`
+ - `tmux`
  - `unpaper`
  - `zstd`/`zstdmt`
  - `node`
