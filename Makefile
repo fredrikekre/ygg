@@ -126,6 +126,7 @@ $(eval $(call simple-install,clang,Clang_jll,clang))
 $(eval $(call simple-install,clang++,Clang_jll,clang))
 $(eval $(call simple-install,rg,ripgrep_jll,rg))
 $(eval $(call simple-install,htop,Htop_jll,htop))
+$(eval $(call simple-install,7z,p7zip_jll,p7zip))
 
 ### Poppler-utils
 $(eval $(call simple-install,pdfattach,Poppler_jll,pdfattach))
