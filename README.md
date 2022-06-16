@@ -81,6 +81,7 @@ The binaries that are currently available to install with `ygg` are:
  - `unpaper`
  - `zstd`/`zstdmt`
  - `node`
+ - `npm`
  - `7z`
 
  If a binary is available in Yggdrasil it is, in general, quite easy to add new ones:

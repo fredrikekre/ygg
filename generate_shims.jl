@@ -47,17 +47,31 @@ $(jll_package).$(jll_func)() do f
     for k in sort(collect(keys(env)))
         print(k, "=\\\"", env[k], "\\\" ")
     end
+    println()
+
+    # Configure args
+    args = String[]
+
+    # npm is just an argument to node
+    if "$(binary)" == "npm"
+        push!(args, "\\\"", NodeJS_16_jll.npm, "\\\"")
+    end
+
+    # Print args to stdout
+    for arg in args
+        print(arg)
+    end
 end
 """
 
-exepath, env = split(strip(read(`$(Base.julia_cmd()) -e $code`, String)), '\n')
+exepath, env, args = strip.(split(read(`$(Base.julia_cmd()) -e $code`, String), '\n'))
 
 shimpath = joinpath(yggbindir, binary)
 mkpath(dirname(shimpath))
 open(shimpath, "w") do io
     print(io, """
         #!/bin/bash
-        $(env) exec -a "\$0" $(basename(exepath)) "\$@"
+        $(env) exec -a "\$0" $(basename(exepath)) $(args) "\$@"
         """)
 end
 
