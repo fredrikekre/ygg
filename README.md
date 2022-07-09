@@ -43,8 +43,9 @@ outside of Julia.
 
 The binaries that are currently available to install with `ygg` are:
 
- - `clang`
+ - `7z`
  - `clang++`
+ - `clang`
  - `convert`
  - `duf`
  - `ffmpeg`
@@ -52,14 +53,16 @@ The binaries that are currently available to install with `ygg` are:
  - `fzf`
  - `gh`
  - `ghr`
- - `git`
  - `git-crypt`
+ - `git`
  - `gof3r`
  - `htop`
  - `identify`
  - `kubectl`
- - `pandoc`
+ - `node`
+ - `npm`
  - `pandoc-crossref`
+ - `pandoc`
  - `pdfattach`
  - `pdfdetach`
  - `pdffonts`
@@ -73,16 +76,14 @@ The binaries that are currently available to install with `ygg` are:
  - `pdftotext`
  - `pdfunite`
  - `rclone`
- - `rr`
  - `rg` (`ripgrep`)
+ - `rr`
+ - `rsvg-convert`
  - `tectonic`
- - `tokei`
  - `tmux`
+ - `tokei`
  - `unpaper`
  - `zstd`/`zstdmt`
- - `node`
- - `npm`
- - `7z`
 
  If a binary is available in Yggdrasil it is, in general, quite easy to add new ones:
  just a single line in the `Makefile`!

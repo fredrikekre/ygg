@@ -65,6 +65,9 @@ test_binary git
 test_binary zstd
 
 if [ "${YGG_FULL_TEST-}" = 1 ]; then
+    test_binary 7z "7z -h"
+    test_binary clang
+    test_binary clang++
     test_binary convert
     test_binary duf
     test_binary ffmpeg "ffmpeg -version"
@@ -74,23 +77,12 @@ if [ "${YGG_FULL_TEST-}" = 1 ]; then
     test_binary ghr
     test_binary git-crypt
     test_binary gof3r
+    test_binary htop
     test_binary identify
     test_binary kubectl "kubectl --help"
+    test_binary node
     test_binary pandoc
     test_binary pandoc-crossref
-    test_binary rr
-    test_binary unpaper
-    test_binary tectonic
-    test_binary tokei
-    test_binary tmux "tmux -V"
-    test_binary zstdmt
-    test_binary rclone
-    test_binary rg
-    test_binary htop
-    test_binary 7z "7z -h"
-    test_binary node
-    test_binary clang
-    test_binary clang++
     test_binary pdfattach "" # No command with error code 0...
     test_binary pdfdetach "" # No command with error code 0...
     test_binary pdffonts "pdffonts -v"
@@ -103,6 +95,15 @@ if [ "${YGG_FULL_TEST-}" = 1 ]; then
     test_binary pdftops "pdftops -v"
     test_binary pdftotext "pdftotext -v"
     test_binary pdfunite "pdfunite -v"
+    test_binary rclone
+    test_binary rg
+    test_binary rr
+    test_binary rsvg-convert
+    test_binary tectonic
+    test_binary tmux "tmux -V"
+    test_binary tokei
+    test_binary unpaper
+    test_binary zstdmt
 fi
 
 echo "Test pass"
