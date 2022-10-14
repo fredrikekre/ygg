@@ -55,6 +55,7 @@ The binaries that are currently available to install with `ygg` are:
  - `ghr`
  - `git-crypt`
  - `git`
+ - `gmsh`
  - `gof3r`
  - `htop`
  - `identify`
