@@ -76,10 +76,12 @@ if [ "${YGG_FULL_TEST-}" = 1 ]; then
     test_binary gh
     test_binary ghr
     test_binary git-crypt
+    test_binary gmsh
     test_binary gof3r
     test_binary htop
     test_binary identify
     test_binary kubectl "kubectl --help"
+    test_binary neper
     test_binary node
     test_binary pandoc
     test_binary pandoc-crossref
