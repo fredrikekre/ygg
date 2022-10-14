@@ -81,6 +81,7 @@ if [ "${YGG_FULL_TEST-}" = 1 ]; then
     test_binary htop
     test_binary identify
     test_binary kubectl "kubectl --help"
+    test_binary make
     test_binary neper
     test_binary node
     test_binary pandoc

@@ -60,6 +60,7 @@ The binaries that are currently available to install with `ygg` are:
  - `htop`
  - `identify`
  - `kubectl`
+ - `make`
  - `neper`
  - `node`
  - `npm`
