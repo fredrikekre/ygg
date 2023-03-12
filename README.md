@@ -28,7 +28,7 @@ outside of Julia.
    This will install `ygg`, and all binaries `ygg` itself will install, to `$HOME/bin/ygg`.
 
 3. Install, update, and uninstall binaries with `ygg install <binary>`,
-   `ygg install <binary>`, and `ygg uninstall <binary>`, respectively. For example, to
+   `ygg update <binary>`, and `ygg uninstall <binary>`, respectively. For example, to
    install the `zstd` compression binary:
    ```bash
    $ ygg install zstd
