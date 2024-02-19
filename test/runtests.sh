@@ -98,6 +98,7 @@ if [ "${YGG_FULL_TEST-}" = 1 ]; then
     test_binary pdftops "pdftops -v"
     test_binary pdftotext "pdftotext -v"
     test_binary pdfunite "pdfunite -v"
+    test_binary pprof
     test_binary rclone
     test_binary rg
     test_binary rr

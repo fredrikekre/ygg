@@ -132,6 +132,7 @@ $(eval $(call simple-install,rsvg-convert,Librsvg_jll,rsvg_convert))
 $(eval $(call simple-install,gmsh,gmsh_jll,gmsh))
 $(eval $(call simple-install,neper,neper_jll,neper))
 $(eval $(call simple-install,make,GNUMake_jll,make))
+$(eval $(call simple-install,pprof,pprof_jll,pprof))
 
 ### Poppler-utils
 $(eval $(call simple-install,pdfattach,Poppler_jll,pdfattach))
