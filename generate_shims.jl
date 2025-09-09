@@ -54,7 +54,7 @@ $(jll_package).$(jll_func)() do f
 
     # npm is just an argument to node
     if "$(binary)" == "npm"
-        push!(args, "\\\"", NodeJS_16_jll.npm, "\\\"")
+        push!(args, "\\\"", NodeJS_20_jll.npm, "\\\"")
     end
 
     # Print args to stdout
