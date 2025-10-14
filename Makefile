@@ -134,6 +134,7 @@ $(eval $(call simple-install,neper,neper_jll,neper))
 $(eval $(call simple-install,make,GNUMake_jll,make))
 $(eval $(call simple-install,pprof,pprof_jll,pprof))
 $(eval $(call simple-install,tracy,TracyProfiler_jll,tracy))
+$(eval $(call simple-install,wget,wget_jll,wget))
 
 ### Poppler-utils
 $(eval $(call simple-install,pdfattach,Poppler_jll,pdfattach))
